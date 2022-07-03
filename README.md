@@ -11,6 +11,8 @@
       <li>CRUD operations for Articles obj</li>
       <li>UI representation for Articles CRUD operations</li>
       <li>Styling application with bootstrap</li>
+      <li>Added users model: CRUD operations</li>
+      <li>Added auth support to the project</li>
     </ul>
   </div>
 </div>
