@@ -30,8 +30,6 @@ class ArticlesController < ApplicationController
 
   def update
     if @article.update(article_params)
-      @article.user = current_user
-      @article.save
       flash[:notice] = "Article was updated successfully."
       redirect_to @article
     else
