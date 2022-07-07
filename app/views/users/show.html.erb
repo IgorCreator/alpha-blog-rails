@@ -5,12 +5,20 @@
     <div class="card text-center shadow mb-5 bg-white rounded">
       <div class="card-header font-italic">
         <%= gravatar_for @user %>
-        <% if logged_in? && @user == current_user %>
+
+        <% if logged_in? %>
           <div class="text-center mt-4">
-            <%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-outline-info" %>
-            <%= link_to "Delete profile", user_path(current_user), class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure?"} %>
+            <% if @user == current_user %>
+              <%= link_to "Edit profile", edit_user_path(@user), class: "btn btn-outline-info" %>
+              <%= link_to "Delete profile", user_path(current_user), class: "btn btn-outline-danger", method: :delete, data: { confirm: "Are you sure?" } %>
+            <% end %>
+            <% if current_user.admin? %>
+              <%= link_to "Delete user", user_path(@user), class: "btn btn-danger", method: :delete,
+                          data: { confirm: "Are you sure you want to delete the user account and all associated articles?" } %>
+            <% end %>
           </div>
         <% end %>
+
       </div>
       <div class="card-footer text-muted">
         Email: <%= @user.email %>
