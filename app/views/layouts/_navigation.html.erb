@@ -18,8 +18,6 @@
             <%= link_to "Create new article", new_article_path, class: "dropdown-item" %>
           <% end %>
           <%= link_to "View articles", articles_path, class: "dropdown-item" %>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
         </div>
       </li>
       <li class="nav-item">
@@ -35,6 +33,8 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <%= link_to "View profile", user_path(current_user), class: "dropdown-item" %>
             <%= link_to "Edit profile", edit_user_path(current_user), class: "dropdown-item" %>
+            <div class="dropdown-divider"></div>
+            <%= link_to "Delete profile", user_path(current_user), class: "dropdown-item text-danger", method: :delete, data: { confirm: "Are you sure?"} %>
           </div>
         </li>
         <%= link_to 'Logout', logout_path, class: "btn btn-outline-info m-1", method: :delete %>
