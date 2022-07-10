@@ -3,7 +3,12 @@ require 'test_helper'
 class CategoryTest < ActiveSupport::TestCase
 
   def setup
-    @category = Category.new(name: "sports")
+    @category = Category.new(name: "SpoRts")
+    @category.save
+  end
+
+  test "category should not be case sensitive" do
+    assert_equal('sports', @category.name)
   end
 
   test "category should be valid" do
