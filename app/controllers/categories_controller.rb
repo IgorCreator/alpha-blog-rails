@@ -1,9 +1,11 @@
 class CategoriesController < ApplicationController
+  before_action :set_category, only: [:show, :edit, :update]
 
   def show
   end
 
   def index
+    @categories = Category.paginate(page: params[:page], per_page: 5)
   end
 
   def new
@@ -27,6 +29,10 @@ class CategoriesController < ApplicationController
   end
 
   private
+
+  def set_category
+    @category = Category.find(params[:id])
+  end
 
   def category_params
     params.require(:category).permit(:name)
