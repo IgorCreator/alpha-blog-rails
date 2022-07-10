@@ -14,7 +14,7 @@ class CreateCategoryTest < ActionDispatch::IntegrationTest
     assert_match "sports", response.body
   end
 
-  test "get new category form and reject invalid category submission" do
+  test "get empty category form and reject invalid submission" do
     get "/categories/new"
     assert_response :success
     assert_no_difference 'Category.count' do
