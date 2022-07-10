@@ -2,6 +2,7 @@ require 'test_helper'
 
 class CreateCategoryTest < ActionDispatch::IntegrationTest
   test "get new category form and create category" do
+    sing_in_as_admin
     get "/categories/new"
     assert_response :success
     assert_difference 'Category.count', 1 do
@@ -15,6 +16,7 @@ class CreateCategoryTest < ActionDispatch::IntegrationTest
   end
 
   test "get empty category form and reject invalid submission" do
+    sing_in_as_admin
     get "/categories/new"
     assert_response :success
     assert_no_difference 'Category.count' do

@@ -10,4 +10,13 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def sing_in_as_admin
+    password = "pwd"
+    @admin_user = User.create(username: "johndoe", email: "example@gmail.com", password: password, admin: true)
+    sing_in_as(@admin_user, password)
+  end
+
+  def sing_in_as(user, password)
+    post login_path, params: {session: {email: user.email, password: password}}
+  end
 end

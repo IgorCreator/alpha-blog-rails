@@ -11,11 +11,13 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
+    sing_in_as_admin
     get new_category_url
     assert_response :success
   end
 
   test "should create category" do
+    sing_in_as_admin
     assert_difference('Category.count', 1) do
       post categories_url, params: { category: { name: "travel" } }
     end
@@ -26,6 +28,14 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   test "should show category" do
     get category_url(@category)
     assert_response :success
+  end
+
+  test "should not create category if not admin" do
+    assert_no_difference'Category.count' do
+      post categories_url, params: { category: { name: "travel" } }
+    end
+
+    assert_redirected_to categories_url
   end
 
   # test "should get edit" do
