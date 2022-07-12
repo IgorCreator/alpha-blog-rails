@@ -13,6 +13,14 @@
       <li>Styling application with bootstrap</li>
       <li>Added users model: CRUD operations</li>
       <li>Added auth support to the project</li>
+      <li>Added categories support</li>
+      <li>Established many-to-many relationship: articles<>categories</li>
+      <li>Added some integration tests</li>
     </ul>
+    <hr class="my-4">
+    <p>To start project use command:<code>rails server</code></p>
+    <p>After redirect to:<code>localhost:3000</code></p>
+    <p>To run all tests in project use:<code>rails test</code></p>
+    <p>To run console use:<code>rails console</code></p>
   </div>
 </div>
