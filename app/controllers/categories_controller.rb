@@ -28,6 +28,12 @@ class CategoriesController < ApplicationController
   end
 
   def update
+    if @category.update(category_params)
+      flash[:notice] = "Category was updated successfully."
+      redirect_to @category
+    else
+      render 'edit'
+    end
   end
 
   private
