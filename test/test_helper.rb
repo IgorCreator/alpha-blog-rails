@@ -12,8 +12,14 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
   def sing_in_as_admin
     password = "pwd"
-    @admin_user = User.create(username: "johndoe", email: "example@gmail.com", password: password, admin: true)
+    @admin_user = User.create(username: "admin", email: "admin@gmail.com", password: password, admin: true)
     sing_in_as(@admin_user, password)
+  end
+
+  def sing_in_as_user
+    password = "pwd"
+    @new_user = User.create(username: "test", email: "test@gmail.com", password: password)
+    sing_in_as(@new_user, password)
   end
 
   def sing_in_as(user, password)
