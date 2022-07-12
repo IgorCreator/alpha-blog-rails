@@ -22,7 +22,7 @@
           <%= f.label :category, class: "col-2 col-form-label text-light" %><br/>
           <div class="col-10">
             <%= f.collection_select(
-                  :categories_ids, Category.all, :id, :name,
+                  :category_ids, Category.all, :id, :name,
                   {},
                   {
                     multiple: true,

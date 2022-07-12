@@ -6,14 +6,13 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in?
-    # transformed User obj in bool with "!!"
     !!current_user
   end
 
-  def required_user
-    unless logged_in?
+  def require_user
+    if !logged_in?
       flash[:alert] = "You must be logged in to perform that action"
-      redirect_to root_path
+      redirect_to login_path
     end
   end
 
